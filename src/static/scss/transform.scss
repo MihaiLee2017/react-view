@@ -1,0 +1,57 @@
+// :global {
+    .go-enter {
+        transform: translateX(100%);
+    }
+
+    .go-enter.go-enter-active {
+        transform: translateX(0%);
+        transition: transform 400ms linear;
+    }
+
+    .go-leave {
+        transform: translateX(0%);
+    }
+
+    .go-leave.go-leave-active {
+      transform: translateX(-100%);
+      transition: transform 400ms linear;
+    }
+
+
+    .back-enter {
+        transform: translateX(-100%);
+    }
+
+    .back-enter.back-enter-active {
+        transform: translateX(0%);
+        transition: transform 400ms linear;
+    }
+
+    .back-leave {
+        transform: translateX(0%);
+    }
+
+    .back-leave.back-leave-active {
+      transform: translateX(100%);
+      transition: transform 400ms linear;
+    }
+
+
+    .example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+// }

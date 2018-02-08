@@ -1,0 +1,21 @@
+@import '../../static/scss/variable.scss';
+.footerBar{
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: $color-bg-l;
+    color:$color-text-d;
+    font-size: $font-size-medium;
+    text-align: center;
+    .item{
+        flex: 1;
+        img{
+            width: 22px;
+            height: 22px;
+            margin-bottom: 3px;
+        }
+        &.select{
+            color:$color-test-b;
+        }
+    }
+}

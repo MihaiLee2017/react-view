@@ -1,0 +1,15 @@
+body,html,#root{
+  height: 100%;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .App_Router{
+    position: relative;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    flex: 1;
+  }
+}
