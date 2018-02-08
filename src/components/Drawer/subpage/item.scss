@@ -1,0 +1,23 @@
+@import '../../../static/scss/variable.scss';
+.DrawerItem{
+    &.select{
+        background-color: $color-bg
+    }
+    padding:8px 20px;
+    font-size: $font-size-medium;
+    color: $color-text;
+    display: flex;
+    align-items: center;
+    border-top:1px solid  $color-bg;
+    .logo{
+        width: 35px;
+        height: 35px;
+        margin-right: 20px;
+        border-radius: 50%;
+        border:1px solid  $color-bg;
+        overflow: hidden;
+        img{
+            width: 100%;
+        }
+    }
+}

@@ -13,6 +13,8 @@ import { ZHIHU_THEME_HOME } from './constants/zhihu'
 // footer bar 配置
 import FooterBar from './components/FooterBar'
 import { TAB_ITEM_List, TAB_KEY_EMU } from './constants/footerBar'
+//抽屉
+import Drawer from './components/Drawer'
 
 class App extends Component {
   constructor(props) {
@@ -70,11 +72,40 @@ class App extends Component {
     })
     this.props.history.replace(`/${key}`)
   }
+  // 选择 Themes(drawer)
+  selectThemesItem(item) {
+    const isHome = ZHIHU_THEME_HOME.id === item.id
+    this.props.zhihuActions.setThemes({
+      currentThemes: item,
+    })
+    this.toggleThemes()
+    if (isHome) {
+      this.props.history.replace('/zhihu')
+    } else {
+      this.props.history.replace(`/zhihuTheme/${item.id}`)
+    }
+
+  }
+  // 切换 drawer
+  toggleThemes() {
+    const { zhiHuThemeState, zhihuActions } = this.props
+    zhihuActions.toggleThemes({
+      isShowThemes: !zhiHuThemeState.isShowThemes
+    })
+  }
   render() {
+    const { zhiHuThemeState } = this.props
     const footerProps = {
       list: TAB_ITEM_List,
       selectKey: this.state.selectKey,
       onClickFn: this.toggleFootBar.bind(this)
+    }
+    const drawProps = {
+      list: zhiHuThemeState.themes,
+      current: zhiHuThemeState.currentThemes,
+      isShowThemes: zhiHuThemeState.isShowThemes,
+      selectItem: this.selectThemesItem.bind(this),
+      maskClick: this.toggleThemes.bind(this)
     }
     return (
       <div className="App">
@@ -82,6 +113,7 @@ class App extends Component {
           {this.props.children}
         </div>
         <FooterBar {...footerProps}></FooterBar>
+        <Drawer {...drawProps}></Drawer>
       </div>
     );
   }

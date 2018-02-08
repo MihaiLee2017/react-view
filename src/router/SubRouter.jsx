@@ -25,8 +25,10 @@ export default class SubRouter extends React.Component {
                 <div key={key} style={{ position: "absolute", width: "100%", top: '0', bottom: '0' }}>
                     <Switch location={location}>
                         <Route exact path='/' component={ZhiHuHome}></Route>
-                        <Route exact path='/zhihu' component={ZhiHuHome}></Route>
-                        <Route exact path='/douban' component={DouBanHome}></Route>
+                        <Route path='/zhihu' component={ZhiHuHome}></Route>
+                        <Route path='/zhihuTheme/:id' component={ZhiHuHome}></Route>
+                        <Route path='/zhihuDetail/:id' component={ZhiHuHome}></Route>
+                        <Route path='/douban' component={DouBanHome}></Route>
                     </Switch>
                 </div >
             </ReactCSSTransitionGroup>

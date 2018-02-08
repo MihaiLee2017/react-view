@@ -1,0 +1,39 @@
+@import '../../static/scss/variable.scss';
+.Drawer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    transform: translateX(-100%);
+    transition: all 0.2s linear;
+    &.showDrawer{
+        opacity: 1;
+        transform: translateX(0);
+        // .mask{
+        //     background-color: rgba(0,0,0,0.5)
+        // }
+        // .slider{
+        //     transform: translateX(0);
+        // }
+    }
+    .mask{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0,0,0,0.5);
+        // background-color: rgba(0,0,0,0.0);
+        // transition: all 0.2s linear;
+    }
+    .slider{
+        position: relative;
+        width: 80%;height: 100%;
+        overflow: auto;
+        background-color: $color-bg-l;
+        // transform: translateX(-100%);
+        // transition: all 0.2s linear;
+    }
+}

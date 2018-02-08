@@ -1,5 +1,13 @@
 // Reducer Action
+/*
+* Themes
+*/
 export const ZHIHU_THEMES = 'ZHIHU_THEMES'
+export const ZHIHU_TOGGLE_THEMES = 'ZHIHU_TOGGLE_THEMES'
+/*
+* Home
+*/
+export const ZHIHU_HOME = 'ZHIHU_HOME'
 
 
 // themes

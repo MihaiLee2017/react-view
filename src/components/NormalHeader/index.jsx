@@ -7,11 +7,20 @@ export default class NormalHeader extends Component {
     // onClickHandle(key) {
     //     this.props.onClickFn && this.props.onClickFn(key)
     // }
+    onLeftClick() {
+        this.props.onLeftClick && this.props.onLeftClick()
+    }
+    onRightClick() {
+        this.props.onRightClick && this.props.onRightClick()
+    }
     render() {
         const { title = '', iconLeft = "", iconRight = "" } = this.props
         return (
             <div className="normalHeader">
-            </div>
+                <span className={iconLeft} onClick={this.onLeftClick.bind(this)}></span>
+                <p>{title}</p>
+                <span className={iconRight} onClick={this.onRightClick.bind(this)}></span>
+            </div >
         );
     }
 }

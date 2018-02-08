@@ -1,0 +1,23 @@
+@import '../../static/scss/variable.scss';
+.scroll_item{
+    margin:10px;
+    padding:20px;
+    background-color: $color-bg-l;
+    border-radius: 5px;
+    font-size: $font-size-medium;
+    display: flex;
+    .logo{
+        width: 80px;
+        height: 80px;
+        margin-left: 20px;
+        img{
+            width: 100%;
+        }
+    }
+    .main{
+        flex: 1;
+        font-size: $font-size-medium-x;
+        line-height: 1.5em;
+        padding: 5px 0px;
+    }
+}

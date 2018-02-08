@@ -1,0 +1,17 @@
+@import '../../static/scss/variable.scss';
+.normalHeader{
+    background-color: $color-bg-b;
+    display: flex;
+    p,span{
+        display: block;
+        width: 30px;
+        line-height: 30px;
+        text-align: center;
+        font-size:$font-size-medium-x;
+        color: $color-bg-l;
+        padding: 5px 10px;;
+    }
+    p{
+        flex: 1;
+    }
+}

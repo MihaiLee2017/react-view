@@ -1,0 +1,19 @@
+@import '../../../static/scss/variable.scss';
+.DrawerHeader{
+    background-color:#29a1f7;
+    padding:25px 20px;
+    color:$color-text-l;
+    font-size: $font-size-medium-x;
+    dl{
+        display: flex;
+        &:nth-child(1){
+            margin-bottom: 15px;
+        }
+        dt{
+            width: 50px;
+        }
+        dd{
+            flex: 1;
+        }
+    }
+}

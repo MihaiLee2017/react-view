@@ -1,0 +1,51 @@
+@import '../../static/scss/variable.scss';
+// .swiper_item{
+//     margin: 10px;
+//     padding: 10px 15px;
+//     background-color: $color-bg-l;
+//     border-radius: 10px;
+//     font-size: $font-size-medium;
+//     display: flex;
+//     .logo{
+//         width: 40px;
+//         height: 40px;
+//         margin-left: 20px;
+//         img{
+//             width: 100%;
+//         }
+//     }
+//     .main{
+//         flex: 1;
+//     }
+// }
+.swiper_item{
+    position: relative;
+    width: 100%;
+    height: 210px;
+    .logo{
+        position: absolute;
+        top:0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .main{
+        position: absolute;
+        top:0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgba(0,0,0,0.5);
+        p{
+            position: absolute;
+            bottom: 30px;
+            padding:0px 15px;
+            color: $color-text-l;
+            font-size: $font-size-large-m;
+            line-height: 1.3em;
+        }
+    }
+}

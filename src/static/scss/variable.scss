@@ -14,10 +14,11 @@
 $color-bg:rgb(238, 238, 238);
 $color-bg-d:#000;
 $color-bg-l:#fff;
+$color-bg-b:#29a1f7;
 $color-text:rgb(0, 0, 0);
-$color-text-d:rgb(54, 54, 54);
+// $color-text-d:rgb(54, 54, 54);
 $color-text-d:rgb(156, 156, 156);
-$color-text-l:rgb(0, 0, 0);
+$color-text-l:#fff;
 $color-test-b:#29a1f7;
 
 //字体定义规范
@@ -26,4 +27,5 @@ $font-size-small : 12px;
 $font-size-medium : 14px;
 $font-size-medium-x : 16px;
 $font-size-large : 18px;
+$font-size-large-m : 20px;
 $font-size-large-x : 22px;
