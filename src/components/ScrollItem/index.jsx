@@ -12,7 +12,7 @@ class ScrollItem extends React.Component {
                     <p>{item.title}</p>
                 </div>
                 {
-                    item.images.length > 0
+                    item.images && item.images.length > 0
                     &&
                     <div className="logo">
                         <img src={item.images[0]} alt={item.title} />

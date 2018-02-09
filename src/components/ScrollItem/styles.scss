@@ -19,5 +19,9 @@
         font-size: $font-size-medium-x;
         line-height: 1.5em;
         padding: 5px 0px;
+        p{
+            margin: 0 !important;
+            padding: 0 !important;
+        }
     }
 }

@@ -4,6 +4,9 @@ import { Route, Switch } from 'react-router-dom'
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 import ZhiHuHome from '../containers/zhihuHome'
+import ZhiHuTheme from '../containers/zhihuTheme'
+import ZhihuDetail from '../containers/zhihuDetail'
+import ZhihuComment from '../containers/zhihuComment'
 import DouBanHome from '../containers/doubanHome'
 
 export default class SubRouter extends React.Component {
@@ -26,8 +29,9 @@ export default class SubRouter extends React.Component {
                     <Switch location={location}>
                         <Route exact path='/' component={ZhiHuHome}></Route>
                         <Route path='/zhihu' component={ZhiHuHome}></Route>
-                        <Route path='/zhihuTheme/:id' component={ZhiHuHome}></Route>
-                        <Route path='/zhihuDetail/:id' component={ZhiHuHome}></Route>
+                        <Route path='/zhihuTheme/:id' component={ZhiHuTheme}></Route>
+                        <Route path='/zhihuDetail/:id' component={ZhihuDetail}></Route>
+                        <Route path='/zhihuComment/:id' component={ZhihuComment}></Route>
                         <Route path='/douban' component={DouBanHome}></Route>
                     </Switch>
                 </div >

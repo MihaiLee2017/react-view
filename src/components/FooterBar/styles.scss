@@ -7,6 +7,18 @@
     color:$color-text-d;
     font-size: $font-size-medium;
     text-align: center;
+    position: relative;
+    &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        top:0px;
+        left: 0px;
+        right: 0px;
+        height: 1px;
+        background-color: $color-bg;
+        transform: scaleY(0.5);
+    }
     .item{
         flex: 1;
         img{

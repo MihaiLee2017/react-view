@@ -1,0 +1,8 @@
+@import '../../static/scss/variable.scss';
+.comment_title{
+    background-color: $color-bg-l;
+    padding:15px 20px;
+    border-bottom: 1px solid $color-bg;
+    font-size: $font-size-medium;
+    color:$color-text-d;
+}

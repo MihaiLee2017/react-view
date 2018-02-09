@@ -1,0 +1,31 @@
+@import '../../static/scss/variable.scss';
+.comment_item{
+    margin-bottom: 1px;
+    padding:15px 20px;
+    background-color: $color-bg-l;
+    display: flex;
+    .logo{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        img{
+            width: 100%;
+        }
+    }
+    .main{
+        flex: 1;
+        h3{
+            font-size: $font-size-large;
+            color: $color-bg-d;
+            margin: 5px 0px 10px;
+        }
+        div{
+            font-size: $font-size-medium;
+            color: $color-text;
+            margin-bottom: 15px;
+            line-height: 1.3em;
+        }
+    }
+}

@@ -18,7 +18,7 @@ class ZhiHuHome extends React.Component {
     componentDidMount() {
         const { zhihomeState } = this.props
         if (zhihomeState.top_stories && zhihomeState.top_stories.length > 0) {
-            this.goScrollDistance()
+            // this.goScrollDistance()
             return false
         }
         this.getZhihuHomeData()
@@ -57,9 +57,9 @@ class ZhiHuHome extends React.Component {
         })
     }
     render() {
-        const { zhiHuThemeState, zhihomeState, history } = this.props
+        const { zhihomeState, history } = this.props
         const headerProps = {
-            title: zhiHuThemeState.currentThemes.name,
+            title: "首页",
             iconLeft: 'icon-home',
             onLeftClick: this.toggleThemes.bind(this),
         }

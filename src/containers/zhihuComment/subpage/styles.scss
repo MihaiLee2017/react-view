@@ -1,0 +1,9 @@
+@import '../../../static/scss/variable.scss';
+.noComment{
+    text-align: center;
+    line-height: 400px;
+    font-size: $font-size-large-x;
+    color: $color-text-d;
+    background-color: $color-bg-l;
+    border-bottom: 1px solid $color-bg;
+}

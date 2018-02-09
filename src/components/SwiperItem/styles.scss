@@ -42,7 +42,8 @@
         p{
             position: absolute;
             bottom: 30px;
-            padding:0px 15px;
+            padding:0px 15px !important;
+            margin: 0 !important;
             color: $color-text-l;
             font-size: $font-size-large-m;
             line-height: 1.3em;
