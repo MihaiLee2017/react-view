@@ -19,6 +19,12 @@ class ZhihuDetail extends React.Component {
         this.createZhiHuCss()
     }
     componentDidMount() {
+        const { zhiHuDetailState } = this.props
+        const { id } = this.props.match.params
+        if (Number.parseInt(zhiHuDetailState.id) === Number.parseInt(id)) {
+            this.goScrollDistance()
+            return false
+        }
         this.getZhiHuDetails()
     }
     componentWillUnmount() {
@@ -42,7 +48,22 @@ class ZhihuDetail extends React.Component {
         let $head = document.getElementsByTagName('head')[0],
             $link = document.querySelector(`#${this.state.cssId}`)
         $head.removeChild($link);
-    }// 获取数据
+    }
+    // 记录页面滑动高度
+    setScrollDistance() {
+        const $dom = this.refs.scrollBody
+        const { zhihuActions } = this.props
+        zhihuActions.setDetail({
+            scrollDistance: $dom.scrollTop
+        })
+    }
+    // 返回到页面滑动高度
+    goScrollDistance() {
+        const $dom = this.refs.scrollBody
+        const { zhiHuDetailState } = this.props
+        $dom.scrollTo(0, zhiHuDetailState.scrollDistance)
+    }
+    // 获取数据
     getZhiHuDetails() {
         const id = this.props.match.params.id
         const { zhihuActions, zhiHuDetailState } = this.props
@@ -52,7 +73,7 @@ class ZhihuDetail extends React.Component {
         getZhiHuDetail(id).then(res => {
             return res.json()
         }).then(res => {
-            console.log(res)
+            // console.log(res)
             const { body, image, title, } = res.CONTENTS
             zhihuActions.setDetail({
                 id,
@@ -69,6 +90,7 @@ class ZhihuDetail extends React.Component {
         this.props.history.goBack()
     }
     goComment() {
+        this.setScrollDistance()
         const id = this.props.match.params.id
         this.props.history.push(`/zhihuComment/${id}`)
     }
@@ -91,7 +113,7 @@ class ZhihuDetail extends React.Component {
         return (
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
-                <div className="App_Router_Main">
+                <div className="App_Router_Main" ref="scrollBody">
                     <DetailTop {...topProps}></DetailTop>
                     <DetailMain {...mainProps}></DetailMain>
                 </div>

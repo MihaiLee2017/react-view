@@ -19,7 +19,7 @@ export default class SubRouter extends React.Component {
         const key = location.pathname
         const { action } = history
         let transName = action === 'POP' ? "back" : action === "PUSH" ? "go" : "example"
-        let transTime = action === 'POP' ? 400 : action === "PUSH" ? 400 : 100
+        let transTime = action === 'POP' ? 300 : action === "PUSH" ? 300 : 200
         return (
             <ReactCSSTransitionGroup
                 transitionName={transName}

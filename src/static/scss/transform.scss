@@ -5,7 +5,7 @@
 
     .go-enter.go-enter-active {
         transform: translateX(0%);
-        transition: transform 400ms linear;
+        transition: transform 300ms linear;
     }
 
     .go-leave {
@@ -14,7 +14,7 @@
 
     .go-leave.go-leave-active {
       transform: translateX(-100%);
-      transition: transform 400ms linear;
+      transition: transform 300ms linear;
     }
 
 
@@ -24,7 +24,7 @@
 
     .back-enter.back-enter-active {
         transform: translateX(0%);
-        transition: transform 400ms linear;
+        transition: transform 300ms linear;
     }
 
     .back-leave {
@@ -33,7 +33,7 @@
 
     .back-leave.back-leave-active {
       transform: translateX(100%);
-      transition: transform 400ms linear;
+      transition: transform 300ms linear;
     }
 
 

@@ -18,22 +18,26 @@ class ZhiHuHome extends React.Component {
     componentDidMount() {
         const { zhihomeState } = this.props
         if (zhihomeState.top_stories && zhihomeState.top_stories.length > 0) {
-            // this.goScrollDistance()
+            this.goScrollDistance()
             return false
         }
         this.getZhihuHomeData()
     }
-    componentDidUpdate() {
-        this.goScrollDistance()
-    }
     // 记录页面滑动高度
     setScrollDistance() {
-
+        const $dom = this.refs.scrollBody
+        const { zhihuActions } = this.props
+        zhihuActions.setHomeData({
+            scrollDistance: $dom.scrollTop
+        })
     }
     // 返回到页面滑动高度
     goScrollDistance() {
         // const $dom = document.querySelector('.App_Router_Main')
         // $dom.scrollTo(0, 400)
+        const $dom = this.refs.scrollBody
+        const { zhihomeState } = this.props
+        $dom.scrollTo(0, zhihomeState.scrollDistance)
     }
     // 获取知乎日报=>redux
     getZhihuHomeData() {
@@ -45,7 +49,8 @@ class ZhiHuHome extends React.Component {
             const { stories, top_stories } = res.STORIES
             zhihuActions.setHomeData({
                 stories,
-                top_stories
+                top_stories,
+                scrollDistance: 0,
             })
         })
     }
@@ -69,12 +74,13 @@ class ZhiHuHome extends React.Component {
         }
         const zhiHuMainProps = {
             stories: zhihomeState.stories,
-            history: history
+            history: history,
+            setScrollDistance: this.setScrollDistance.bind(this)
         }
         return (
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
-                <div className="App_Router_Main">
+                <div className="App_Router_Main" ref="scrollBody">
                     {/*<SwiperDemo></SwiperDemo>*/}
                     <ZhiHuTop {...zhiHuTopProps}></ZhiHuTop>
                     <ZhiHuMain {...zhiHuMainProps}></ZhiHuMain>

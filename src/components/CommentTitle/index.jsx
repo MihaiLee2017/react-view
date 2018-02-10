@@ -2,9 +2,9 @@ import React from 'react'
 import './styles.scss'
 class CommentTitle extends React.Component {
     render() {
-        const { title = "" } = this.props
+        const { title = "", toggleComment = () => { } } = this.props
         return (
-            <div className="comment_title">
+            <div className="comment_title" onClick={toggleComment.bind(this)}>
                 {title}
             </div>
         )

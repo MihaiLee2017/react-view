@@ -1,11 +1,14 @@
 @import '../../../static/scss/variable.scss';
-.Detail_Title{
-    background-color: $color-bg-l;
-    padding: 30px 25px 15px;;
-    h2{
-        color: $color-text;
-        font-size: $font-size-large-x;
-        font-weight: bold !important;
-        line-height: 1.2em;
+.Detail_Top{
+    border-bottom: 2px solid $color-bg;
+    .Detail_Title{
+        background-color: $color-bg-l;
+        padding: 30px 25px;
+        h2{
+            color: $color-text;
+            font-size: $font-size-large-x;
+            font-weight: bold !important;
+            line-height: 1.2em;
+        }
     }
 }

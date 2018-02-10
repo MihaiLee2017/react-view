@@ -1,5 +1,8 @@
 import React from 'react'
 class DetailMain extends React.Component {
+    componentDidMount() {
+        this.removeDom()
+    }
     componentDidUpdate() {
         this.removeDom()
     }

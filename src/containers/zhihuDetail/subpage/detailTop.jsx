@@ -6,7 +6,7 @@ class DetailTop extends React.Component {
     render() {
         const { top = {} } = this.props
         return (
-            <div>
+            <div className="Detail_Top">
                 {
                     top.image ?
                         <SwipterItem item={top}></SwipterItem> :

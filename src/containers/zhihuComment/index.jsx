@@ -48,6 +48,7 @@ class zhihuComment extends React.Component {
         const shortProps = {
             comments: zhiHuCommentState.shortComment,
             type: 'short',
+            toggle: true,
         }
         return (
             <div className="App_Router_Content">
