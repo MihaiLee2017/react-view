@@ -1,6 +1,7 @@
 import React from 'react'
 import SwiperDemo from '../../../components/SwiperDemo'
 import SwipterItem from '../../../components/SwiperItem'
+import Swiper from '../../../components/Swiper'
 class ZhiHuTop extends React.Component {
     onClickItem(item) {
         this.props.history.push(`/zhihuDetail/${item.id}`)
@@ -16,6 +17,23 @@ class ZhiHuTop extends React.Component {
                 {
                     len > 0
                     &&
+                    <Swiper>
+                        {
+                            top_stories.map((item, index) => {
+                                const itemProps = {
+                                    item,
+                                    onClickItem: this.onClickItem.bind(this)
+                                }
+                                return (
+                                    <SwipterItem key={index} {...itemProps}></SwipterItem>
+                                )
+                            })
+                        }
+                    </Swiper>
+                }
+                {/*{
+                    len > 0
+                    &&
                     <SwiperDemo {...swiperProps}>
                         {
                             top_stories.map((item, index) => {
@@ -29,7 +47,7 @@ class ZhiHuTop extends React.Component {
                             })
                         }
                     </SwiperDemo>
-                }
+                }*/}
             </div>
         )
     }

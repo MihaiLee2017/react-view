@@ -10,6 +10,8 @@ import ZhiHuTop from './subpage/top'
 import ZhiHuMain from './subpage/main'
 import './styles.scss'
 
+import Scroller from '../../components/Scroller'
+
 class ZhiHuHome extends React.Component {
     // constructor(props) {
     //     super(props)
@@ -84,6 +86,9 @@ class ZhiHuHome extends React.Component {
                     {/*<SwiperDemo></SwiperDemo>*/}
                     <ZhiHuTop {...zhiHuTopProps}></ZhiHuTop>
                     <ZhiHuMain {...zhiHuMainProps}></ZhiHuMain>
+                    {/*<Scroller>
+                        <ZhiHuMain {...zhiHuMainProps}></ZhiHuMain>
+                    </Scroller>*/}
                 </div>
             </div>
         )
