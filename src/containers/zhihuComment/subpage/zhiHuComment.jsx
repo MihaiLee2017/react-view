@@ -17,9 +17,7 @@ class ZhiHuComment extends React.Component {
             this.setState((prevState) => ({
                 isShow: !prevState.isShow
             }))
-            // if (cState) {
-            this.scrollToTop()
-            // }
+            // this.scrollToTop()
         }
     }
     scrollToTop() {

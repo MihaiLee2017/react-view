@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DrawerHeader from './subpage/Header'
 import DrawerItem from './subpage/Item'
+// import Scroller from '../../components/Scroller'
 import './styles.scss'
 class Drawer extends Component {
     // constructor(props) {
@@ -16,6 +17,7 @@ class Drawer extends Component {
             <div className={`Drawer ${isShowThemes ? 'showDrawer' : ''}`}>
                 <div className="mask" onClick={maskClick.bind(this)}></div>
                 <div className="slider">
+                    {/*<Scroller>*/}
                     <DrawerHeader></DrawerHeader>
                     {
                         list.length > 0 &&
@@ -30,6 +32,7 @@ class Drawer extends Component {
                             )
                         })
                     }
+                    {/*</Scroller>*/}
                 </div>
             </div>
         );

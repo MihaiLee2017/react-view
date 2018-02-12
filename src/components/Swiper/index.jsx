@@ -19,11 +19,15 @@ class Swiper extends React.Component {
     componentDidMount() {
         this.setInitSwiper()
     }
+    componentWillUnmount() {
+        const { slider } = this.state
+        slider.destroy()
+    }
+    // 初始化
     setInitSwiper() {
         const { autoPlay } = this.state
         setTimeout(() => {
             this._setSliderWidth()
-            // this._initDots()
             this._initSlider()
             if (autoPlay) {
                 this._play()
@@ -36,9 +40,13 @@ class Swiper extends React.Component {
                 this._setSliderWidth(true)
                 slider.refresh()
             })
-        }, 20);
+        }, 60);
     }
+    // 设置容器宽度
     _setSliderWidth(isResize) {
+        if (!this.refs.sliderGroup) {
+            return
+        }
         const children = this.refs.sliderGroup.children
         let width = 0
         let sliderWidth = this.refs.slider.clientWidth
@@ -60,6 +68,7 @@ class Swiper extends React.Component {
         }
         this.refs.sliderGroup.style.width = `${width}px`
     }
+    // 创建BScroll实例
     _initSlider() {
         const { loop, threshold, autoPlay } = this.state
         const slider = new BScroll(this.refs.slider, {
@@ -92,9 +101,11 @@ class Swiper extends React.Component {
             }
         })
     }
+    // 播放
     _play() {
-        const { currentPageIndex, slider, threshold, interval } = this.state
-        let pageIndex = currentPageIndex + 1
+        const { currentPageIndex, slider, threshold, interval, dots } = this.state
+        const len = dots.length
+        let pageIndex = Math.floor((currentPageIndex + 1) % len)
         timer = setTimeout(() => {
             // clearTimeout(timer)
             slider.goToPage(pageIndex, 0, threshold * 1000)

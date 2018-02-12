@@ -3,13 +3,12 @@ import React from 'react'
 import ScrollItem from '../../../components/ScrollItem/'
 class ThemeMain extends React.Component {
     onClickItem(item) {
-        this.props.setScrollDistance && this.props.setScrollDistance()
+        // this.props.setScrollDistance && this.props.setScrollDistance()
         this.props.history.push(`/zhihuDetail/${item.id}`)
     }
     render() {
         const { stories = [] } = this.props
         const len = stories.length
-        console.log(stories)
         return (
             <div>
                 {

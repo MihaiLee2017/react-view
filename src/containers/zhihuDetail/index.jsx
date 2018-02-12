@@ -7,6 +7,7 @@ import { getZhiHuDetail } from '../../fetch/zhihu'
 import NormalHeader from '../../components/NormalHeader'
 import DetailTop from './subpage/detailTop'
 import DetailMain from './subpage/detailMain'
+import Scroller from '../../components/Scroller'
 class ZhihuDetail extends React.Component {
     constructor(props) {
         super(props)
@@ -17,15 +18,23 @@ class ZhihuDetail extends React.Component {
     }
     componentWillMount() {
         this.createZhiHuCss()
+        const { history = {}, zhihuActions } = this.props
+        if (history.action !== "POP") {
+            zhihuActions.setDetail({
+                scrollDistance: 0
+            })
+        }
     }
     componentDidMount() {
-        const { zhiHuDetailState } = this.props
-        const { id } = this.props.match.params
-        if (Number.parseInt(zhiHuDetailState.id) === Number.parseInt(id)) {
-            this.goScrollDistance()
-            return false
-        }
-        this.getZhiHuDetails()
+        setTimeout(() => {
+            const { zhiHuDetailState } = this.props
+            const { id } = this.props.match.params
+            if (Number.parseInt(zhiHuDetailState.id) === Number.parseInt(id)) {
+                // this.goScrollDistance()
+                return false
+            }
+            this.getZhiHuDetails()
+        }, 20);
     }
     componentWillUnmount() {
         this.removeZhiHuCss()
@@ -50,26 +59,23 @@ class ZhihuDetail extends React.Component {
         $head.removeChild($link);
     }
     // 记录页面滑动高度
-    setScrollDistance() {
-        const $dom = this.refs.scrollBody
+    setScrollDistance(distance) {
+        // const $dom = this.refs.scrollBody
         const { zhihuActions } = this.props
         zhihuActions.setDetail({
-            scrollDistance: $dom.scrollTop
+            scrollDistance: distance
         })
     }
     // 返回到页面滑动高度
-    goScrollDistance() {
-        const $dom = this.refs.scrollBody
-        const { zhiHuDetailState } = this.props
-        $dom.scrollTo(0, zhiHuDetailState.scrollDistance)
-    }
+    // goScrollDistance() {
+    //     const $dom = this.refs.scrollBody
+    //     const { zhiHuDetailState } = this.props
+    //     $dom.scrollTo(0, zhiHuDetailState.scrollDistance)
+    // }
     // 获取数据
     getZhiHuDetails() {
         const id = this.props.match.params.id
         const { zhihuActions, zhiHuDetailState } = this.props
-        // if (Number.parseInt(zhiHuDetailState.id) === Number.parseInt(id)) {
-        //     return false
-        // }
         getZhiHuDetail(id).then(res => {
             return res.json()
         }).then(res => {
@@ -90,7 +96,7 @@ class ZhihuDetail extends React.Component {
         this.props.history.goBack()
     }
     goComment() {
-        this.setScrollDistance()
+        // this.setScrollDistance()
         const id = this.props.match.params.id
         this.props.history.push(`/zhihuComment/${id}`)
     }
@@ -103,6 +109,10 @@ class ZhihuDetail extends React.Component {
             iconRight: 'icon-indent-increase',
             onRightClick: this.goComment.bind(this),
         }
+        const scrollerPrpos = {
+            scrollDistance: zhiHuDetailState.scrollDistance,
+            setScrollDistance: this.setScrollDistance.bind(this)
+        }
         const topProps = {
             top: zhiHuDetailState.top,
             history: history
@@ -114,8 +124,10 @@ class ZhihuDetail extends React.Component {
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
                 <div className="App_Router_Main" ref="scrollBody">
-                    <DetailTop {...topProps}></DetailTop>
-                    <DetailMain {...mainProps}></DetailMain>
+                    <Scroller {...scrollerPrpos}>
+                        <DetailTop {...topProps}></DetailTop>
+                        <DetailMain {...mainProps}></DetailMain>
+                    </Scroller>
                 </div>
             </div>
         )

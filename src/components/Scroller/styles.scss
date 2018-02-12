@@ -1,0 +1,30 @@
+
+@import '../../static/scss/variable.scss';
+.wrapper{
+    height: 100%;
+    .pullup-wrapper{
+        background: rgb(255, 255, 255);
+        margin: 1px 0px;
+        text-align: center;
+        span{
+            font-size: $font-size-medium;
+            color:$color-text-d;
+            line-height: 40px;
+            display: inline-block;
+            vertical-align: text-top;
+        }
+        .loadingIcon{
+            font-size: $font-size-large;
+            margin-right: 5px;
+            animation:loadingIcon 2s infinite;
+        }
+    }
+}
+
+
+@keyframes loadingIcon
+{
+    0% {transform: rotateZ(0);}
+    50% {transform: rotateZ(180deg);}
+    100% {transform: rotateZ(360deg);}
+}

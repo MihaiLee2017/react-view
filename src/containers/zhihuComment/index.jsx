@@ -6,6 +6,7 @@ import * as zhihuActions from '../../actions/zhihu'
 import { getLongCommont, getShortCommont } from '../../fetch/zhihu'
 import NormalHeader from '../../components/NormalHeader'
 import ZhiHuComment from './subpage/zhiHuComment'
+import Scroller from '../../components/Scroller'
 class zhihuComment extends React.Component {
     componentDidMount() {
         this.getComments()
@@ -16,7 +17,6 @@ class zhihuComment extends React.Component {
         getLongCommont(id).then(res => {
             return res.json()
         }).then(res => {
-            console.log("long cmmont:", res)
             const { comments } = res.COMMENTS
             zhihuActions.setComment({
                 longComment: comments
@@ -54,8 +54,10 @@ class zhihuComment extends React.Component {
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
                 <div className="App_Router_Main">
-                    <ZhiHuComment {...longProps}></ZhiHuComment>
-                    <ZhiHuComment {...shortProps}></ZhiHuComment>
+                    <Scroller>
+                        <ZhiHuComment {...longProps}></ZhiHuComment>
+                        <ZhiHuComment {...shortProps}></ZhiHuComment>
+                    </Scroller>
                 </div>
             </div>
         )

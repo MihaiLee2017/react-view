@@ -43,6 +43,8 @@ function itemStates(state = themeItem, action) {
 const homeState = {
     stories: [],
     top_stories: [],
+    requestDate: '',
+    hasMore: true,
     scrollDistance: 0,
 }
 function homeStates(state = homeState, action) {

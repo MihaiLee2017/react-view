@@ -15,7 +15,6 @@ import FooterBar from './components/FooterBar'
 import { TAB_ITEM_List, TAB_KEY_EMU } from './constants/footerBar'
 //抽屉
 import Drawer from './components/Drawer'
-
 class App extends Component {
   constructor(props) {
     super(props)

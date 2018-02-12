@@ -7,37 +7,46 @@ import { getDailyThemesItem } from '../../fetch/zhihu'
 import NormalHeader from '../../components/NormalHeader'
 import ThemeTop from './subpage/themeTop'
 import ThemeMain from './subpage/themeMain'
+import Scroller from '../../components/Scroller'
 class ZhiHuTheme extends React.Component {
     // constructor(props) {
     //     super(props)
     // }
-    componentDidMount() {
-        // console.log("this.props.match.params.id:", this.props.match.params.id)
-        // this.getZhiHuThemeData()
-        const { zhiHuThemeItem } = this.props
-        const { id } = this.props.match.params
-        if (Number.parseInt(zhiHuThemeItem.id) === Number.parseInt(id)) {
-            this.goScrollDistance()
-            return false
+    componentWillMount() {
+        const { history = {}, zhihuActions } = this.props
+        if (history.action !== "POP") {
+            zhihuActions.setThemeItem({
+                scrollDistance: 0
+            })
         }
-        this.getZhiHuThemeData()
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            const { zhiHuThemeItem } = this.props
+            const { id } = this.props.match.params
+            if (Number.parseInt(zhiHuThemeItem.id) === Number.parseInt(id)) {
+                // this.goScrollDistance()
+                return false
+            }
+            this.getZhiHuThemeData()
+        }, 20);
     }
     // 记录页面滑动高度
-    setScrollDistance() {
-        const $dom = this.refs.scrollBody
+    setScrollDistance(distance) {
+        // const $dom = this.refs.scrollBody
         const { zhihuActions } = this.props
         zhihuActions.setThemeItem({
-            scrollDistance: $dom.scrollTop
+            scrollDistance: distance
         })
     }
     // 返回到页面滑动高度
-    goScrollDistance() {
-        // const $dom = document.querySelector('.App_Router_Main')
-        // $dom.scrollTo(0, 400)
-        const $dom = this.refs.scrollBody
-        const { zhiHuThemeItem } = this.props
-        $dom.scrollTo(0, zhiHuThemeItem.scrollDistance)
-    }
+    // goScrollDistance() {
+    //     // const $dom = document.querySelector('.App_Router_Main')
+    //     // $dom.scrollTo(0, 400)
+    //     const $dom = this.refs.scrollBody
+    //     const { zhiHuThemeItem } = this.props
+    //     $dom.scrollTo(0, zhiHuThemeItem.scrollDistance)
+    // }
 
     // 获取Theme具体内容
     getZhiHuThemeData() {
@@ -77,6 +86,10 @@ class ZhiHuTheme extends React.Component {
             iconLeft: 'icon-home',
             onLeftClick: this.toggleThemes.bind(this),
         }
+        const scrollerPrpos = {
+            scrollDistance: zhiHuThemeItem.scrollDistance,
+            setScrollDistance: this.setScrollDistance.bind(this)
+        }
         const topProps = {
             top: zhiHuThemeItem.top,
             history: history
@@ -84,16 +97,16 @@ class ZhiHuTheme extends React.Component {
         const mainProps = {
             stories: zhiHuThemeItem.stories,
             history: history,
-            setScrollDistance: this.setScrollDistance.bind(this)
+            // setScrollDistance: this.setScrollDistance.bind(this)
         }
         return (
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
                 <div className="App_Router_Main" ref="scrollBody">
-                    <ThemeTop {...topProps}></ThemeTop>
-                    <ThemeMain {...mainProps}></ThemeMain>
-                    {/*<ZhiHuTop {...zhiHuTopProps}></ZhiHuTop>
-                        <ZhiHuMain {...zhiHuMainProps}></ZhiHuMain>*/}
+                    <Scroller {...scrollerPrpos}>
+                        <ThemeTop {...topProps}></ThemeTop>
+                        <ThemeMain {...mainProps}></ThemeMain>
+                    </Scroller>
                 </div>
             </div>
         )

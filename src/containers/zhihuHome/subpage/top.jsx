@@ -1,6 +1,8 @@
 import React from 'react'
+// react-swipeable-views
 import SwiperDemo from '../../../components/SwiperDemo'
 import SwipterItem from '../../../components/SwiperItem'
+// better-scrolle 封装的swiper
 import Swiper from '../../../components/Swiper'
 class ZhiHuTop extends React.Component {
     onClickItem(item) {
