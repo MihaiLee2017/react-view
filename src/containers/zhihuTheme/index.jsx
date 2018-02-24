@@ -39,37 +39,28 @@ class ZhiHuTheme extends React.Component {
             scrollDistance: distance
         })
     }
-    // 返回到页面滑动高度
-    // goScrollDistance() {
-    //     // const $dom = document.querySelector('.App_Router_Main')
-    //     // $dom.scrollTo(0, 400)
-    //     const $dom = this.refs.scrollBody
-    //     const { zhiHuThemeItem } = this.props
-    //     $dom.scrollTo(0, zhiHuThemeItem.scrollDistance)
-    // }
 
     // 获取Theme具体内容
     getZhiHuThemeData() {
         const id = this.props.match.params.id
         const { zhiHuThemeItem, zhihuActions } = this.props
-        // console.log(Number.parseInt(zhiHuThemeItem.id) === Number.parseInt(id))
-        if (Number.parseInt(zhiHuThemeItem.id) === Number.parseInt(id)) {
-            return false
-        }
         getDailyThemesItem(id).then(res => {
             return res.json()
         }).then(res => {
-            const { image, name, stories } = res.THEMEDES
-            // console.log(res)
-            zhihuActions.setThemeItem({
-                id,
-                top: {
-                    image,
-                    title: name,
-                },
-                stories,
-                scrollDistance: 0,
-            })
+            setTimeout(() => {
+                const { image, name, stories } = res.THEMEDES
+                // console.log(res)
+                zhihuActions.setThemeItem({
+                    id,
+                    top: {
+                        image,
+                        title: name,
+                    },
+                    stories,
+                    scrollDistance: 0,
+                })
+            }, 1500);
+
         })
     }
     // 切换 Themes drawer
@@ -88,7 +79,9 @@ class ZhiHuTheme extends React.Component {
         }
         const scrollerPrpos = {
             scrollDistance: zhiHuThemeItem.scrollDistance,
-            setScrollDistance: this.setScrollDistance.bind(this)
+            setScrollDistance: this.setScrollDistance.bind(this),
+            pullDownRefresh: true,
+            getPullDownRefresh: this.getZhiHuThemeData.bind(this),
         }
         const topProps = {
             top: zhiHuThemeItem.top,
