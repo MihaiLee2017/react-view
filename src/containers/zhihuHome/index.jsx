@@ -18,6 +18,7 @@ class ZhiHuHome extends React.Component {
     // }
     componentWillMount() {
         const { history = {}, zhihuActions } = this.props
+        console.log(history.action)
         if (history.action !== "POP") {
             zhihuActions.setHomeData({
                 scrollDistance: 0
@@ -42,14 +43,6 @@ class ZhiHuHome extends React.Component {
             scrollDistance: distance,
         })
     }
-    // 返回到页面滑动高度
-    // goScrollDistance() {
-    //     // const $dom = document.querySelector('.App_Router_Main')
-    //     // $dom.scrollTo(0, 400)
-    //     const $dom = this.refs.scrollBody
-    //     const { zhihomeState } = this.props
-    //     $dom.scrollTo(0, zhihomeState.scrollDistance)
-    // }
     // 获取知乎日报=>redux
     getZhihuHomeData() {
         const { zhihuActions } = this.props
@@ -57,13 +50,16 @@ class ZhiHuHome extends React.Component {
             return res.json()
         }).then(res => {
             // console.log(res)
-            const { stories, top_stories, date } = res.STORIES
-            zhihuActions.setHomeData({
-                stories,
-                top_stories,
-                requestDate: date,
-                scrollDistance: 0,
-            })
+            setTimeout(() => {
+                const { stories, top_stories, date } = res.STORIES
+                zhihuActions.setHomeData({
+                    stories,
+                    top_stories,
+                    requestDate: date,
+                    scrollDistance: 0,
+                })
+            }, 1000)
+
         })
     }
     getPullUpMore() {
@@ -72,15 +68,17 @@ class ZhiHuHome extends React.Component {
         getZhiHuLastDaily(zhihomeState.requestDate).then(res => {
             return res.json()
         }).then(res => {
-            let { stories, top_stories, date } = res.STORIES
-            const hasMore = this._checkHasMore(date)
-            stories = [...zhihomeState.stories, ...stories]
-            zhihuActions.setHomeData({
-                stories,
-                // top_stories,
-                requestDate: date,
-                hasMore,
-            })
+            setTimeout(() => {
+                let { stories, top_stories, date } = res.STORIES
+                const hasMore = this._checkHasMore(date)
+                stories = [...zhihomeState.stories, ...stories]
+                zhihuActions.setHomeData({
+                    stories,
+                    // top_stories,
+                    requestDate: date,
+                    hasMore,
+                })
+            }, 1000);
         })
     }
     _checkHasMore(date) {
@@ -107,6 +105,8 @@ class ZhiHuHome extends React.Component {
             pullUpLoad: true,
             hasMore: zhihomeState.hasMore,
             getPullUpMore: this.getPullUpMore.bind(this),
+            pullDownRefresh: true,
+            getPullDownRefresh: this.getZhihuHomeData.bind(this),
             stories: zhihomeState.stories,
             scrollDistance: zhihomeState.scrollDistance,
             setScrollDistance: this.setScrollDistance.bind(this)

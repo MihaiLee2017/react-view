@@ -8,8 +8,11 @@ export default class Scroller extends Component {
             probeType: this.props.probeType || 1,   // 返回滚动高度的时机
             click: this.props.canClick || true, // 是否可以点击
             scroll: null,   // BScroll 实体
+            pullDownRefresh: this.props.pullDownRefresh || false, // 下拉加载
+            isPullingDown: false, //  是否正在加载
+            beforePullDown: true, //
             pullUpLoad: this.props.pullUpLoad || false, // 上拉加载
-            isPullUpLoad: false, // 正在加载
+            isPullUpLoad: this.props.pullUpLoad ? true : false, // 正在加载
             hasMore: this.props.hasMore || false, // 是否还有更多
         }
     }
@@ -22,7 +25,8 @@ export default class Scroller extends Component {
         })
     }
     componentWillReceiveProps(nextProps) {
-        if (this.props.stories && this.props.stories.length !== nextProps.stories.length) {
+        const { isPullingDown, pullDownRefresh } = this.state
+        if ((isPullingDown && pullDownRefresh) || (this.props.stories && this.props.stories.length !== nextProps.stories.length)) {
             this.forceUpdate()
         }
     }
@@ -57,25 +61,40 @@ export default class Scroller extends Component {
         if (!$wrapper) {
             return
         }
-        const { probeType, click, pullUpLoad } = this.state
+        const { probeType, click, pullUpLoad, pullDownRefresh } = this.state
         const scroll = new BScroll($wrapper, {
             probeType,
             click,
             pullUpLoad: pullUpLoad,
+            pullDownRefresh: pullDownRefresh ? {
+                threshold: 80,
+                stop: 40,
+            } : false,
         })
         this.setState({
             scroll,
         })
+        if (pullDownRefresh) {
+            this._initpullDownRefresh()
+        }
         if (pullUpLoad) {
             this._initpullUpLoad()
         }
-        // scroll.on("scrollEnd", (obj) => {
-        //     this.props.setScrollDistance && this.props.setScrollDistance(scroll.y)
-        // })
+    }
+    // 下拉刷新
+    _initpullDownRefresh() {
+        const { scroll } = this.state
+        scroll.on("pullingDown", () => {
+            this.setState({
+                beforePullDown: false,
+                isPullingDown: true,
+            })
+            this.props.getPullDownRefresh && this.props.getPullDownRefresh()
+        })
     }
     // 上拉加载
     _initpullUpLoad() {
-        const { scroll, hasMore } = this.state
+        const { scroll } = this.state
         scroll.on('pullingUp', () => {
             const { hasMore } = this.state
             if (hasMore) {
@@ -87,10 +106,34 @@ export default class Scroller extends Component {
             }
         })
     }
+    // _reboundPullDown
+    _reboundPullDown() {
+        const { scroll } = this.state
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                scroll.finishPullDown()
+                resolve()
+            }, 600);
+        })
+    }
     // 加载完成后涮新BScroll
     forceUpdate() {
-        const { isPullUpLoad, pullUpLoad, scroll } = this.state
-        if (isPullUpLoad && pullUpLoad) {
+        const { isPullUpLoad, pullUpLoad, scroll, pullDownRefresh, isPullingDown } = this.state
+        if (pullDownRefresh && isPullingDown) {
+            this.setState({
+                isPullingDown: false,
+                // beforePullDown: false,
+            })
+            this._reboundPullDown().then(() => {
+                setTimeout(() => {
+                    this.setState({
+                        beforePullDown: true,
+                    })
+                    this.refresh()
+                }, scroll.options.bounceTime);
+            })
+        }
+        else if (isPullUpLoad && pullUpLoad) {
             const { hasMore } = this.props
             this.setState({
                 isPullUpLoad: false,
@@ -103,7 +146,7 @@ export default class Scroller extends Component {
         }
     }
     render() {
-        const { pullUpLoad, isPullUpLoad, hasMore } = this.state
+        const { pullUpLoad, isPullUpLoad, hasMore, pullDownRefresh, isPullingDown, beforePullDown } = this.state
         return (
             <div className="wrapper" ref="wrapper">
                 <div>
@@ -125,7 +168,31 @@ export default class Scroller extends Component {
                             }
                         </div>
                     }
-
+                    {
+                        pullDownRefresh &&
+                        <div className="pulldown-wrapper">
+                            {
+                                beforePullDown ?
+                                    <div className="before-trigger">
+                                        <span>下拉刷新</span>
+                                    </div>
+                                    :
+                                    <div className="after-trigger">
+                                        {
+                                            isPullingDown ?
+                                                <div>
+                                                    <span className="icon-spinner3 loadingIcon"></span>
+                                                    <span>正在刷新</span>
+                                                </div>
+                                                :
+                                                <div>
+                                                    <span>刷新完成</span>
+                                                </div>
+                                        }
+                                    </div>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         )

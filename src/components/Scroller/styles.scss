@@ -2,6 +2,7 @@
 @import '../../static/scss/variable.scss';
 .wrapper{
     height: 100%;
+    position: relative;
     .pullup-wrapper{
         background: rgb(255, 255, 255);
         margin: 1px 0px;
@@ -11,12 +12,36 @@
             color:$color-text-d;
             line-height: 40px;
             display: inline-block;
-            vertical-align: text-top;
+            // vertical-align: text-top;
+            vertical-align: middle;
         }
         .loadingIcon{
-            font-size: $font-size-large;
+            // font-size: $font-size-large;
             margin-right: 5px;
-            animation:loadingIcon 2s infinite;
+            animation:loadingIcon 2s infinite linear;
+        }
+    }
+    .pulldown-wrapper{
+       position: absolute;
+       width: 100%;
+       line-height: 40px;
+       left: 0;
+       top: 0px;
+       transform: translateY(-100%);
+       text-align: center;
+    //    background: #fff;
+       span{
+            font-size: $font-size-medium;
+            color:$color-text-d;
+            line-height: 40px;
+            display: inline-block;
+            // vertical-align: text-top;
+            vertical-align: middle;
+        }
+        .loadingIcon{
+            // font-size: $font-size-large;
+            margin-right: 5px;
+            animation:loadingIcon 2s 0s infinite linear;
         }
     }
 }
