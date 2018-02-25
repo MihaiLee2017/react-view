@@ -10,6 +10,7 @@ import SearchHeader from '../../components/SearchHeader'
 import Scroller from '../../components/Scroller'
 import Lists from './subpage/Lists'
 import TabSelect from '../../components/TabSelect'
+import './styles.scss'
 class DouBanHome extends React.Component {
     constructor(props) {
         super(props)
@@ -134,7 +135,7 @@ class DouBanHome extends React.Component {
                 <SearchHeader {...headerProps}></SearchHeader>
                 <TabSelect {...tabProps}></TabSelect>
                 <div className="App_Router_Main" ref="scrollBody">
-                    {
+                    {/*{
                         tab_key === DOUBAN_TAB_KEY[0].key ?
                             <Scroller key={DOUBAN_TAB_KEY[0].key} {...scrollerProps}>
                                 <Lists {...theatersProps}></Lists>
@@ -143,7 +144,17 @@ class DouBanHome extends React.Component {
                             <Scroller key={DOUBAN_TAB_KEY[1].key} {...comingScrollerProps}>
                                 <Lists {...comingProps}></Lists>
                             </Scroller>
-                    }
+                    }*/}
+                    <div className={tab_key === DOUBAN_TAB_KEY[0].key ? 'current_tab tabItem' : 'tabItem'}>
+                        <Scroller key={DOUBAN_TAB_KEY[0].key} {...scrollerProps}>
+                            <Lists {...theatersProps}></Lists>
+                        </Scroller>
+                    </div>
+                    <div className={tab_key === DOUBAN_TAB_KEY[1].key ? 'current_tab tabItem' : 'tabItem'}>
+                        <Scroller key={DOUBAN_TAB_KEY[1].key} {...comingScrollerProps}>
+                            <Lists {...comingProps}></Lists>
+                        </Scroller>
+                    </div>
                 </div>
                 {/*
                  <Scroller {...scrollerProps}>
