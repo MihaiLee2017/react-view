@@ -19,6 +19,7 @@ export default class NormalHeader extends Component {
             <div className="normalHeader">
                 <span className={iconLeft} onClick={this.onLeftClick.bind(this)}></span>
                 <p>{title}</p>
+                {this.props.children}
                 <span className={iconRight} onClick={this.onRightClick.bind(this)}></span>
             </div >
         );

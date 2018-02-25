@@ -1,0 +1,15 @@
+@import '../../static/scss/variable.scss';
+.tab_select{
+    display: flex;
+    text-align: center;
+    background-color: $color-bg-l;
+    span{
+        display: block;
+        flex: 1;
+        font-size: $font-size-medium;
+        padding: 15px 0px;
+        &.tab_select{
+            color: $color-test-b
+        }
+    }
+}

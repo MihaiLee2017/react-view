@@ -18,7 +18,7 @@ class ZhiHuHome extends React.Component {
     // }
     componentWillMount() {
         const { history = {}, zhihuActions } = this.props
-        console.log(history.action)
+        // console.log(history.action)
         if (history.action !== "POP") {
             zhihuActions.setHomeData({
                 scrollDistance: 0
@@ -66,6 +66,7 @@ class ZhiHuHome extends React.Component {
         const { zhihomeState, zhihuActions } = this.props
         // const { stories, top_stories } = zhihomeState
         getZhiHuLastDaily(zhihomeState.requestDate).then(res => {
+            console.log(res)
             return res.json()
         }).then(res => {
             setTimeout(() => {
@@ -107,7 +108,7 @@ class ZhiHuHome extends React.Component {
             getPullUpMore: this.getPullUpMore.bind(this),
             pullDownRefresh: true,
             getPullDownRefresh: this.getZhihuHomeData.bind(this),
-            stories: zhihomeState.stories,
+            scrollLists: zhihomeState.stories,
             scrollDistance: zhihomeState.scrollDistance,
             setScrollDistance: this.setScrollDistance.bind(this)
         }

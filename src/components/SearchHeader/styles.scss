@@ -1,0 +1,29 @@
+@import '../../static/scss/variable.scss';
+.searchHeader{
+    background-color: $color-bg-b;
+    display: flex;
+    p{
+        display: block;
+        line-height: 30px;
+        font-size:$font-size-medium-x;
+        color: $color-bg-l;
+        padding: 5px 10px !important;
+        margin: 0 !important;
+    }
+    .searchInput{
+        flex: 1;
+        background-color: $color-bg-l;
+        color: #666;
+        border-radius: 15px;
+        height: 28px;
+        padding-left: 10px;
+        margin: 6px 30px 5px 6px;
+        span{
+            float: left;
+            display: block;
+            height: 100%;
+            line-height: 28px;
+            margin-right: 5px;
+        }
+    }
+}

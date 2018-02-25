@@ -1,0 +1,34 @@
+@import '../../static/scss/variable.scss';
+.douban_item{
+    background-color: $color-bg-l;
+    border-top: 1px solid $color-bg;
+    padding: 15px 20px;
+    display: flex;
+    min-height: 198px;
+    box-sizing: border-box;
+    .logo{
+        width: 110px;
+        margin-right: 10px;
+        img{
+            width:100%;
+        }
+    }
+    .message{
+        font-size: $font-size-medium;
+        color:$color-text-d;
+        line-height: 1.5em;
+        flex: 1;
+        overflow: hidden;
+        h3{
+            font-size: $font-size-medium-x;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        p{
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
