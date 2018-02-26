@@ -14,6 +14,8 @@ export default class Scroller extends Component {
             pullUpLoad: this.props.pullUpLoad || false, // 上拉加载
             isPullUpLoad: this.props.pullUpLoad ? true : false, // 正在加载
             hasMore: this.props.hasMore || false, // 是否还有更多
+            scrollX: this.props.scrollX || false,
+            scrollY: this.props.scrollX || true,
         }
     }
     componentDidMount() {
@@ -75,9 +77,11 @@ export default class Scroller extends Component {
         if (!$wrapper) {
             return
         }
-        const { probeType, click, pullUpLoad, pullDownRefresh } = this.state
+        const { probeType, click, pullUpLoad, pullDownRefresh, scrollX, scrollY } = this.state
         const scroll = new BScroll($wrapper, {
             probeType,
+            scrollX,
+            scrollY,
             click,
             pullUpLoad: pullUpLoad ? {
                 threshold: 50

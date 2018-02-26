@@ -1,0 +1,25 @@
+@import '../../static/scss/variable.scss';
+.Film_item{
+    width: 75px;
+    .poster{
+        margin-bottom: 8px;
+        img {
+            width: 100%;
+        }
+    }
+    .message{
+        text-align: center;
+        font-size: $font-size-small;
+        *{
+            padding-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        h4{
+            color: $color-text;
+        }
+        p{
+            color:#999;
+        }
+    }
+}

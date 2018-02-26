@@ -12,3 +12,8 @@ export function getDouBanComingSoon(start, count) {
     url = `${url}?start=${start}&count=${count}`
     return getDouBan(url)
 }
+// 详细信息
+export function getDouBanSubject(id) {
+    let url = URL.BASE_URL + URL.SUBJECT + id
+    return getDouBan(url)
+}

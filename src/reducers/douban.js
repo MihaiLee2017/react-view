@@ -42,8 +42,29 @@ function tabKeyStates(state = tabState, action) {
             return state
     }
 }
+const fileDetailState = {
+    title: '',
+    images: [],
+    year: '',
+    rating: {},
+    genres: [],
+    countries: [],
+    ratings_count: '',
+    summary: '',
+    directors: [],
+    casts: [],
+}
+function fileDetailStates(state = fileDetailState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_FILE_DETAIL:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
 export default combineReducers({
     theatersStates,
     comingStates,
     tabKeyStates,
+    fileDetailStates,
 })

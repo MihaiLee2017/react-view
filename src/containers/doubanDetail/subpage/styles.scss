@@ -1,0 +1,103 @@
+@import '../../../static/scss/variable.scss';
+.douban_poster{
+    padding:30px 50px;
+    background-color: rgba(0,0,0,0.8);
+    .content{
+        text-align: center;
+        margin: auto;
+    }
+    // .mock{
+    //     position: fixed;
+    //     top: 0;
+    //     left: 0;
+    //     z-index: 999;
+    //     background-color: rgba(0,0,0,0.8);
+    //     img{
+    //         width: 100%;
+    //         position: absolute;
+    //         top: 50%;
+    //         left: 0;
+    //         transform: translateY(-50%);
+    //     }
+    // }
+}
+.douban_info{
+    background-color: $color-bg-l;
+    padding: 20px;
+    border-bottom: 1px solid $color-bg;
+    display: flex;
+    align-items: center;
+    .left{
+        flex: 1;
+        letter-spacing: 1px;
+        h3{
+            font-size: $font-size-large-m;
+            color: $color-text;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        p{
+            font-size: $font-size-small;
+            color:#999;
+            margin-bottom: 8px;
+        }
+    }
+    .right{
+        width: 70px;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        box-shadow: 0 0 10px #999;
+        *{
+            line-height: 1.5em;
+        }
+        .title,.count{
+            font-size: $font-size-small;
+            color:#999;
+        }
+        .average{
+            font-size: $font-size-large;
+            color:$color-text;
+        }
+    }
+}
+.douban_into{
+    background-color: $color-bg-l;
+    padding: 20px;
+    border-bottom: 1px solid $color-bg;
+    h3{
+        font-size: $font-size-small;
+        color:#999;
+        margin-bottom: 15px;
+    }
+    p{
+        font-size: $font-size-medium;
+        color:$color-text;
+        line-height: 1.8em;
+        height: 55px;
+        overflow: hidden;  /** 隐藏超出的内容 **/
+        text-overflow: ellipsis;
+        &.show_all{
+            height: auto;
+        }
+    }
+    .toggle_btn{
+        text-align: right;
+        span{
+            display: inline-block;
+            padding-top: 15px;
+            color:#999;
+            font-size: $font-size-medium;
+        }
+    }
+}
+.film{
+    background-color: $color-bg-l;
+    padding: 20px;
+    border-bottom: 1px solid $color-bg;
+    h3{
+        font-size: $font-size-small;
+        color:#999;
+        margin-bottom: 15px;
+    }
+}

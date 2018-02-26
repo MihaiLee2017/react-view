@@ -8,6 +8,7 @@ import ZhiHuTheme from '../containers/zhihuTheme'
 import ZhihuDetail from '../containers/zhihuDetail'
 import ZhihuComment from '../containers/zhihuComment'
 import DouBanHome from '../containers/doubanHome'
+import DoubanDetail from '../containers/doubanDetail'
 
 export default class SubRouter extends React.Component {
     // constructor(props) {
@@ -33,6 +34,7 @@ export default class SubRouter extends React.Component {
                         <Route path='/zhihuDetail/:id' component={ZhihuDetail}></Route>
                         <Route path='/zhihuComment/:id' component={ZhihuComment}></Route>
                         <Route path='/douban' component={DouBanHome}></Route>
+                        <Route path='/doubanDetail/:id' component={DoubanDetail}></Route>
                     </Switch>
                 </div >
             </ReactCSSTransitionGroup>

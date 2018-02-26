@@ -25,3 +25,11 @@ export function toggleTabKey(payload) {
         payload,
     }
 }
+
+// 电影详情
+export function fileDetail(payload) {
+    return {
+        type: actionTypes.DOUBAN_FILE_DETAIL,
+        payload,
+    }
+}

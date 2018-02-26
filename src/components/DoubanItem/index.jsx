@@ -1,12 +1,15 @@
 import React from 'react'
 import './styles.scss'
 class DoubanItem extends React.Component {
+    onClickFn() {
+        this.props.onClickFn && this.props.onClickFn()
+    }
     render() {
         const { casts = [], directors = [], images = {}, rating = {}, title = "", year = "" } = this.props
         const dLen = directors.length
         const cLen = casts.length
         return (
-            <div className="douban_item">
+            <div className="douban_item" onClick={this.onClickFn.bind(this)}>
                 <div className="logo">
                     <img src={images.small} alt='' />
                 </div>

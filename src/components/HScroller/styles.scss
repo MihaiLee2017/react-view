@@ -1,0 +1,11 @@
+.HScroller{
+    white-space:nowrap;
+    overflow: hidden;
+    .HContent{
+        .hscroll_item{
+            display: inline-block;
+            box-sizing:border-box;
+        }
+    }
+   
+}

@@ -27,15 +27,18 @@ class Lists extends React.Component {
         })
         return ret
     }
-    render() {
+    onItemClick(item) {
         const { history } = this.props
+        history.push(`/doubanDetail/${item.id}`)
+    }
+    render() {
         let list = this._setList()
         return (
             <div>
                 {
                     list.map((item, index) => {
                         return (
-                            <DoubanItem key={index} {...item}></DoubanItem>
+                            <DoubanItem key={index} {...item} onClickFn={this.onItemClick.bind(this, item)}></DoubanItem>
                         )
                     })
                 }
