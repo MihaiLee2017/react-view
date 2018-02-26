@@ -31,7 +31,19 @@ function comingStates(state = comingState, action) {
             return state
     }
 }
+const tabState = {
+    tab_key: "",
+}
+function tabKeyStates(state = tabState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_SET_KEY:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
 export default combineReducers({
     theatersStates,
     comingStates,
+    tabKeyStates,
 })

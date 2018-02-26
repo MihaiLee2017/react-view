@@ -12,23 +12,51 @@ import Lists from './subpage/Lists'
 import TabSelect from '../../components/TabSelect'
 import './styles.scss'
 class DouBanHome extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            tab_key: DOUBAN_TAB_KEY[0].key
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         tab_key: DOUBAN_TAB_KEY[0].key
+    //     }
+    // }
+    componentWillMount() {
+        const { history = {}, doubanActions } = this.props
+        // console.log(history.action)
+        if (history.action !== "POP") {
+            doubanActions.setInTheaters({
+                scrollDistance: 0
+            })
+            doubanActions.setComing({
+                scrollDistance: 0
+            })
         }
     }
     componentDidMount() {
         setTimeout(() => {
-            this.getDoubanDate()
+            const { douBanTabKey, doubanActions } = this.props
+            if (!douBanTabKey.tab_key) {
+                doubanActions.toggleTabKey({
+                    tab_key: DOUBAN_TAB_KEY[0].key
+                })
+                this.getDoubanDate()
+            }
         }, 20)
     }
     // 记录页面滑动高度
-    setScrollDistance(distance) {
-        const { doubanActions } = this.props
-        doubanActions.setInTheaters({
-            scrollDistance: distance,
-        })
+    setScrollDistance(tab_key, distance) {
+        // console.log("tab_key", tab_key)
+        // console.log("distance", distance)
+        const { doubanActions, douBanTabKey } = this.props
+        // const { tab_key } = douBanTabKey
+        if (tab_key === DOUBAN_TAB_KEY[0].key) {
+            doubanActions.setInTheaters({
+                scrollDistance: distance,
+            })
+        }
+        if (tab_key === DOUBAN_TAB_KEY[1].key) {
+            doubanActions.setComing({
+                scrollDistance: distance,
+            })
+        }
     }
     getDoubanDate() {
         this._getInTheaters()
@@ -87,12 +115,15 @@ class DouBanHome extends React.Component {
         })
     }
     onSelectTabFn(item) {
-        this.setState({
+        // this.setState({
+        //     tab_key: item.key
+        // })
+        this.props.doubanActions.toggleTabKey({
             tab_key: item.key
         })
     }
     render() {
-        const { douBanTheaters, douBanComing, history } = this.props
+        const { douBanTheaters, douBanComing, douBanTabKey, history } = this.props
         const headerProps = {
             title: "豆瓣电影",
             keyWord: ['搜索', '电影']
@@ -102,7 +133,7 @@ class DouBanHome extends React.Component {
             pullDownRefresh: true,
             getPullDownRefresh: this._getInTheaters.bind(this),
             scrollDistance: douBanTheaters.scrollDistance,
-            setScrollDistance: this.setScrollDistance.bind(this),
+            setScrollDistance: this.setScrollDistance.bind(this, DOUBAN_TAB_KEY[0].key),
             scrollLists: douBanTheaters.list,
         }
         const theatersProps = {
@@ -117,7 +148,7 @@ class DouBanHome extends React.Component {
             pullDownRefresh: true,
             getPullDownRefresh: this._getComingSoon.bind(this),
             scrollDistance: douBanComing.scrollDistance,
-            setScrollDistance: this.setScrollDistance.bind(this),
+            setScrollDistance: this.setScrollDistance.bind(this, DOUBAN_TAB_KEY[1].key),
             scrollLists: douBanComing.list,
         }
         const comingProps = {
@@ -125,26 +156,16 @@ class DouBanHome extends React.Component {
             history: history,
         }
         const tabProps = {
-            tab_key: this.state.tab_key,
+            tab_key: douBanTabKey.tab_key,
             tabLists: DOUBAN_TAB_KEY,
             selectTabFn: this.onSelectTabFn.bind(this)
         }
-        const { tab_key } = this.state
+        const { tab_key } = douBanTabKey
         return (
             <div className="App_Router_Content">
                 <SearchHeader {...headerProps}></SearchHeader>
                 <TabSelect {...tabProps}></TabSelect>
                 <div className="App_Router_Main" ref="scrollBody">
-                    {/*{
-                        tab_key === DOUBAN_TAB_KEY[0].key ?
-                            <Scroller key={DOUBAN_TAB_KEY[0].key} {...scrollerProps}>
-                                <Lists {...theatersProps}></Lists>
-                            </Scroller>
-                            :
-                            <Scroller key={DOUBAN_TAB_KEY[1].key} {...comingScrollerProps}>
-                                <Lists {...comingProps}></Lists>
-                            </Scroller>
-                    }*/}
                     <div className={tab_key === DOUBAN_TAB_KEY[0].key ? 'current_tab tabItem' : 'tabItem'}>
                         <Scroller key={DOUBAN_TAB_KEY[0].key} {...scrollerProps}>
                             <Lists {...theatersProps}></Lists>
@@ -172,6 +193,7 @@ function mapStateToProps(state) {
     return {
         douBanTheaters: state.douban.theatersStates,
         douBanComing: state.douban.comingStates,
+        douBanTabKey: state.douban.tabKeyStates
         // zhihomeState: state.zhihu.homeStates
     }
 }

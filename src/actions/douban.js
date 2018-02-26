@@ -17,3 +17,11 @@ export function setComing(payload) {
         payload,
     }
 }
+
+// 当前显示的tab
+export function toggleTabKey(payload) {
+    return {
+        type: actionTypes.DOUBAN_SET_KEY,
+        payload,
+    }
+}
