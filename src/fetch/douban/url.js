@@ -6,3 +6,5 @@ export const IN_THEATERS = '/v2/movie/in_theaters'
 export const COMING_SOON = '/v2/movie/coming_soon'
 // 详细信息
 export const SUBJECT = '/v2/movie/subject/'
+// 海报
+export const SUBJECT_PHOTOS = '/v2/movie/subject/{id}/photos'

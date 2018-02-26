@@ -1,6 +1,9 @@
 import { getDouBan } from '../request'
 import * as URL from './url'
 
+function setReplaceUrl(url, rep) {
+    return url.replace(/\{([^)]*)\}/, rep)
+}
 // 正在上映
 export function getDouBanInTheaters() {
     let url = URL.BASE_URL + URL.IN_THEATERS
@@ -15,5 +18,11 @@ export function getDouBanComingSoon(start, count) {
 // 详细信息
 export function getDouBanSubject(id) {
     let url = URL.BASE_URL + URL.SUBJECT + id
+    return getDouBan(url)
+}
+// 海报信息
+export function getDouBanPhotos(id) {
+    let url = URL.BASE_URL + URL.SUBJECT_PHOTOS
+    url = setReplaceUrl(url, id)
     return getDouBan(url)
 }
