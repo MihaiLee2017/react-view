@@ -11,6 +11,7 @@ export function get(url) {
 }
 export function getDouBan(url) {
     let myHeaders = new Headers({
+        // 'Referer': 'no-referrer-when-downgrade',
         // 'Referrer Policy': 'no-referrer-when-downgrade',
         // 'Access-Control-Allow-Origin': 'no-cors',
         // 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
@@ -19,9 +20,9 @@ export function getDouBan(url) {
     });
     var result = fetch(url, {
         method: 'GET',
-        // headers: {
-        //     'Access-Control-Allow-Origin': '*',
-        // },
+        headers: {
+            'Referer': 'no-referrer-when-downgrade',
+        },
         // mode: 'no-cors',
     })
     return result

@@ -6,6 +6,8 @@ export const DOUBAN_COMING = "DOUBAN_COMING"
 export const DOUBAN_SET_KEY = "DOUBAN_SET_KEY"
 // 电影详细信息
 export const DOUBAN_FILE_DETAIL = "DOUBAN_FILE_DETAIL"
+// 电影人
+export const DOUBAN_FILE_CELEBRITY = "DOUBAN_FILE_CELEBRITY"
 // tab_key
 export const DOUBAN_TAB_KEY = [
     {

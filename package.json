@@ -111,6 +111,14 @@
       "pathRewrite": {
         "^/douban": ""
       }
+    },
+    "/zhihu": {
+      "target": "https://zhihu-daily.leanapp.cn",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/zhihu": ""
+      }
     }
   }
 }

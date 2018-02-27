@@ -1,8 +1,8 @@
 import React from 'react'
 import './styles.scss'
 import HScroller from '../../../components/HScroller'
-import FilmItem from '../../../components/FilmItem'
-class Film extends React.Component {
+import WorksItem from '../../../components//WorksItem/'
+class Works extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,41 +11,39 @@ class Film extends React.Component {
     }
     setList() {
         const {
-            directors = [],
-            casts = []
+            works = [],
+            name = '',
         } = this.props
         let ret = []
-        directors.forEach((item) => {
+        works.forEach((item) => {
             const obj = {
-                role: "导演",
-                images: item.avatars || []
+                // role: item.roles.length > 0 ? item.roles[0] : '',
+                images: item.subject.images,
+                title: item.subject.title,
+                rating: item.subject.rating.average,
+                id: item.subject.id,
+                // name,
             }
-            ret.push({ ...obj, ...item })
-        })
-        casts.forEach((item) => {
-            const obj = {
-                role: "演员",
-                images: item.avatars || {}
-            }
-            ret.push({ ...obj, ...item })
+            ret.push(obj)
         })
         return ret
     }
     onClickItem(item) {
-        this.props.history.replace(`/doubanCelebrity/${item.id}`)
+        this.props.history.replace(`/doubanDetail/${item.id}`)
     }
     render() {
         // let list = { ...directors, ...casts }
         let list = this.setList()
+        console.log(list)
         return (
-            <div className="film">
-                <h3>影人</h3>
+            <div className="douban_works">
+                <h3>代表作品</h3>
                 <div>
                     <HScroller list={list}>
                         {
                             list.map((item, index) => {
                                 return (
-                                    <FilmItem key={index} item={item} onClickItem={this.onClickItem.bind(this)}></FilmItem>
+                                    <WorksItem key={index} item={item} onClickItem={this.onClickItem.bind(this)}></WorksItem>
                                 )
                             })
                         }
@@ -55,4 +53,4 @@ class Film extends React.Component {
         )
     }
 }
-export default Film
+export default Works

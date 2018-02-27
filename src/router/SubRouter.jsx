@@ -9,13 +9,14 @@ import ZhihuDetail from '../containers/zhihuDetail'
 import ZhihuComment from '../containers/zhihuComment'
 import DouBanHome from '../containers/doubanHome'
 import DoubanDetail from '../containers/doubanDetail'
+import DoubanCelebrity from '../containers/doubanCelebrity'
 
 export default class SubRouter extends React.Component {
     // constructor(props) {
     //     super(props)
     // }
     render() {
-        // console.log(this.props)
+        console.log(this.props)
         const { location = {}, history = {}, } = this.props
         const key = location.pathname
         const { action } = history
@@ -35,6 +36,7 @@ export default class SubRouter extends React.Component {
                         <Route path='/zhihuComment/:id' component={ZhihuComment}></Route>
                         <Route path='/douban' component={DouBanHome}></Route>
                         <Route path='/doubanDetail/:id' component={DoubanDetail}></Route>
+                        <Route path='/doubanCelebrity/:id' component={DoubanCelebrity}></Route>
                     </Switch>
                 </div >
             </ReactCSSTransitionGroup>

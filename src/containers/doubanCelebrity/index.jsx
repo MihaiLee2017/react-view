@@ -4,13 +4,13 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import NormalHeader from '../../components/NormalHeader'
 import Scroller from '../../components/Scroller'
-import { getDouBanSubject, getDouBanPhotos } from '../../fetch/douban'
+import { getDouBanCelebrity } from '../../fetch/douban'
 import * as doubanActions from '../../actions/douban'
 import Poster from './subpage/poster'
 import Information from './subpage/information'
-import Introduction from './subpage/introduction'
-import Film from './subpage/film'
-class DoubanDetail extends React.Component {
+import Works from './subpage/works'
+// import Film from './subpage/film'
+class DoubanCelebrity extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,19 +21,17 @@ class DoubanDetail extends React.Component {
     componentDidMount() {
         setTimeout(() => {
             // 详细信息
-            this._getDoubanDetails()
-            // 海报
-            // this._getDoubanComment()
+            this._getDoubanCelebrity()
         }, 20)
     }
-    _getDoubanDetails() {
+    _getDoubanCelebrity() {
         const { id } = this.props.match.params
         const { doubanActions } = this.props
-        getDouBanSubject(id).then(res => {
+        getDouBanCelebrity(id).then(res => {
             return res.json()
         }).then(res => {
-            // console.log(res)
-            doubanActions.fileDetail({
+            console.log(res)
+            doubanActions.celebrityDetail({
                 ...res
             })
         })
@@ -51,51 +49,43 @@ class DoubanDetail extends React.Component {
         this.props.history.goBack()
     }
     render() {
-        const { history, doubanFileDetail } = this.props
+        const { history, doubanCelebrityDetail } = this.props
         const {
-            title = "",
-            images = [],
-            year = '',
-            rating = {},
-            genres = [],
-            countries = [],
-            ratings_count = '',
-            summary = '',
-            directors = [],
-            casts = [],
-
-        } = doubanFileDetail
+            name = '',
+            name_en = '',
+            aka = [],
+            gender = '',
+            born_place = '',
+            works = [],
+            avatars = {},
+            id = '',
+        } = doubanCelebrityDetail
         const headerProps = {
-            title,
+            title: name,
             iconLeft: 'icon-arrow-left2',
             onLeftClick: this.goBack.bind(this),
         }
-        // const scrollerPrpos = {
-        //     scrollX: true,
-        //     scrollY: false,
-        // }
+        // // const scrollerPrpos = {
+        // //     scrollX: true,
+        // //     scrollY: false,
+        // // }
         const posterProps = {
-            images,
+            images: avatars,
         }
         const infoProps = {
-            title,
-            images,
-            year,
-            rating,
-            genres,
-            countries,
-            ratings_count,
-            directors,
-            casts,
+            name,
+            name_en,
+            aka,
+            gender,
+            born_place,
+            id,
         }
-        const intoProps = {
-            summary,
+        const worksProps = {
+            works,
+            name,
+            history,
         }
-        const film = {
-            directors,
-            casts,
-            history
-        }
+        console.log("works:", works)
         return (
             <div className="App_Router_Content">
                 <NormalHeader {...headerProps}></NormalHeader>
@@ -103,8 +93,7 @@ class DoubanDetail extends React.Component {
                     <Scroller>
                         <Poster {...posterProps}></Poster>
                         <Information {...infoProps}></Information>
-                        <Introduction {...intoProps}></Introduction>
-                        <Film {...film}></Film>
+                        <Works {...worksProps}></Works>
                     </Scroller>
                 </div>
             </div>
@@ -113,7 +102,7 @@ class DoubanDetail extends React.Component {
 }
 function mapStateToProps(state) {
     return {
-        doubanFileDetail: state.douban.fileDetailStates,
+        doubanCelebrityDetail: state.douban.celebrityStates,
     }
 }
 function mapDispatchToProps(dispatch) {
@@ -124,4 +113,4 @@ function mapDispatchToProps(dispatch) {
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(DoubanDetail))
+)(DoubanCelebrity))

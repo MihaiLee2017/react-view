@@ -1,16 +1,18 @@
+// export const ZHIHU_BASE = "https://zhihu-daily.leanapp.cn"
+export const ZHIHU_BASE = "/zhihu"
 // 最新数据
-export const LAST_STORIES = "https://zhihu-daily.leanapp.cn/api/v1/last-stories"
+export const LAST_STORIES = "/api/v1/last-stories"
 // 以往数据
-export const BEFORE_STORIES = "https://zhihu-daily.leanapp.cn/api/v1/before-stories/{date}"
+export const BEFORE_STORIES = "/api/v1/before-stories/{date}"
 // 文章内容
-export const ARTICLE_CONTENTS = "https://zhihu-daily.leanapp.cn/api/v1/contents/{id}"
+export const ARTICLE_CONTENTS = "/api/v1/contents/{id}"
 // 文字额外数据
-export const ARTICLE_EXTRA = "https://zhihu-daily.leanapp.cn/api/v1/contents/extra/{id}"
+export const ARTICLE_EXTRA = "/api/v1/contents/extra/{id}"
 // 长评论
-export const ARTICLE_LONG_COMMENTS = "https://zhihu-daily.leanapp.cn/api/v1/contents/{id}/long-comments"
+export const ARTICLE_LONG_COMMENTS = "/api/v1/contents/{id}/long-comments"
 // 长评论
-export const ARTICLE_SHORT_COMMENTS = "https://zhihu-daily.leanapp.cn/api/v1/contents/{id}/short-comments"
+export const ARTICLE_SHORT_COMMENTS = "/api/v1/contents/{id}/short-comments"
 // 主题日报
-export const DAILY_THEMES = "https://zhihu-daily.leanapp.cn/api/v1/themes"
+export const DAILY_THEMES = "/api/v1/themes"
 // 主题日报内容
-export const DAILY_THEMES_ITEM = "https://zhihu-daily.leanapp.cn/api/v1/themes/{id}"
+export const DAILY_THEMES_ITEM = "/api/v1/themes/{id}"

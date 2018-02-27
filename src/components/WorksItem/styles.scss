@@ -1,0 +1,28 @@
+@import '../../static/scss/variable.scss';
+.Works_item{
+    width: 75px;
+    .poster{
+        margin-bottom: 8px;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
+    .message{
+        text-align: center;
+        font-size: $font-size-small;
+        *{
+            padding-bottom: 5px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        h4{
+            color: $color-text;
+            text-align: left;
+        }
+        p{
+            color:#999;
+            text-align: left;
+        }
+    }
+}

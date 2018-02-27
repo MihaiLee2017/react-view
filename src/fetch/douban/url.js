@@ -8,3 +8,6 @@ export const COMING_SOON = '/v2/movie/coming_soon'
 export const SUBJECT = '/v2/movie/subject/'
 // 海报
 export const SUBJECT_PHOTOS = '/v2/movie/subject/{id}/photos'
+
+// 电影人
+export const CELEBRITY = '/v2/movie/celebrity/{id}'

@@ -26,3 +26,10 @@ export function getDouBanPhotos(id) {
     url = setReplaceUrl(url, id)
     return getDouBan(url)
 }
+
+// 影人
+export function getDouBanCelebrity(id) {
+    let url = URL.BASE_URL + URL.CELEBRITY
+    url = setReplaceUrl(url, id)
+    return getDouBan(url)
+}

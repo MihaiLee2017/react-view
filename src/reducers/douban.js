@@ -62,9 +62,30 @@ function fileDetailStates(state = fileDetailState, action) {
             return state
     }
 }
+
+const celebrityState = {
+    name: '',
+    name_en: '',
+    aka: [],
+    gender: '',
+    born_place: '',
+    works: [],
+    avatars: {},
+    id: '',
+}
+function celebrityStates(state = celebrityState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_FILE_CELEBRITY:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     theatersStates,
     comingStates,
     tabKeyStates,
     fileDetailStates,
+    celebrityStates,
 })

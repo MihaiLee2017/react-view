@@ -33,3 +33,11 @@ export function fileDetail(payload) {
         payload,
     }
 }
+
+// 电影人
+export function celebrityDetail(payload) {
+    return {
+        type: actionTypes.DOUBAN_FILE_CELEBRITY,
+        payload,
+    }
+}
