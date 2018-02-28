@@ -1,0 +1,40 @@
+@import '../../static/scss/variable.scss';
+.inputHeader{
+    background-color: $color-bg-b;
+    display: flex;
+    line-height: 40px;
+    .inputMain{
+        flex: 1;
+        background-color: $color-bg-l;
+        color: #666;
+        border-radius: 15px;
+        height: 28px;
+        line-height: 28px;
+        margin: 6px 0 6px 15px;
+        display: flex;
+        position: relative;
+        span{
+            display: block;
+            margin-left:15px;
+            line-height: 28px;
+            &.iconRight{
+                margin-right:15px;
+                position: absolute;
+                right: 0;
+            }
+        }
+        input{
+            flex: 1;
+            outline: none;
+            border: none;
+            height: 100%;
+            margin:0 10px;
+        }
+    }
+    .inputBtn{
+        display: block;
+        padding: 0 20px;
+        font-size: $font-size-medium;
+        color: $color-text-l;
+    }
+}

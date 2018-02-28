@@ -10,7 +10,7 @@ import ZhihuComment from '../containers/zhihuComment'
 import DouBanHome from '../containers/doubanHome'
 import DoubanDetail from '../containers/doubanDetail'
 import DoubanCelebrity from '../containers/doubanCelebrity'
-
+import DoubanSearch from '../containers/doubanSearch'
 export default class SubRouter extends React.Component {
     // constructor(props) {
     //     super(props)
@@ -37,6 +37,7 @@ export default class SubRouter extends React.Component {
                         <Route path='/douban' component={DouBanHome}></Route>
                         <Route path='/doubanDetail/:id' component={DoubanDetail}></Route>
                         <Route path='/doubanCelebrity/:id' component={DoubanCelebrity}></Route>
+                        <Route path='/doubanSearch/:value?' component={DoubanSearch}></Route>
                     </Switch>
                 </div >
             </ReactCSSTransitionGroup>

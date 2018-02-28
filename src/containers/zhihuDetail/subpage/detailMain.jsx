@@ -11,7 +11,9 @@ class DetailMain extends React.Component {
         if ($headline) {
             $headline.parentNode.removeChild($headline)
             const $more = document.querySelector('.view-more')
-            $more.parentNode.removeChild($more)
+            if ($more) {
+                $more.parentNode.removeChild($more)
+            }
         }
     }
     render() {

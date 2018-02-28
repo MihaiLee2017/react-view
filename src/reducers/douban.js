@@ -82,10 +82,44 @@ function celebrityStates(state = celebrityState, action) {
     }
 }
 
+const searchCookieState = {
+    records: []
+}
+function searchCookieStates(state = searchCookieState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_SEARCH_COOKIE:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
+
+const searchListState = {
+    value: '',
+    list: [],
+    page: {
+        total: 0,
+        start: 0,
+        count: 20,
+        hasMore: true,
+    },
+    scrollDistance: 0,
+}
+function searchListStates(state = searchListState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_SEARCH_LIST:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     theatersStates,
     comingStates,
     tabKeyStates,
     fileDetailStates,
     celebrityStates,
+    searchCookieStates,
+    searchListStates,
 })

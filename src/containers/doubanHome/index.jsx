@@ -122,11 +122,15 @@ class DouBanHome extends React.Component {
             tab_key: item.key
         })
     }
+    onSearchClick() {
+        this.props.history.push('/doubanSearch')
+    }
     render() {
         const { douBanTheaters, douBanComing, douBanTabKey, history } = this.props
         const headerProps = {
             title: "豆瓣电影",
-            keyWord: ['搜索', '电影']
+            keyWord: ['搜索', '电影'],
+            onSearchClick: this.onSearchClick.bind(this)
         }
         // 正在上映模块
         const scrollerProps = {

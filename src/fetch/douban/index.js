@@ -33,3 +33,11 @@ export function getDouBanCelebrity(id) {
     url = setReplaceUrl(url, id)
     return getDouBan(url)
 }
+
+// 电影
+export function getDouBanSearch(test, start, count) {
+    let url = URL.BASE_URL + URL.SEARCH
+    url = setReplaceUrl(url, test)
+    url = `${url}&start=${start}&count=${count}`
+    return getDouBan(url)
+}

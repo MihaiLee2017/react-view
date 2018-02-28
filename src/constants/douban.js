@@ -8,6 +8,10 @@ export const DOUBAN_SET_KEY = "DOUBAN_SET_KEY"
 export const DOUBAN_FILE_DETAIL = "DOUBAN_FILE_DETAIL"
 // 电影人
 export const DOUBAN_FILE_CELEBRITY = "DOUBAN_FILE_CELEBRITY"
+// 搜索记录
+export const DOUBAN_SEARCH_COOKIE = "DOUBAN_SEARCH_COOKIE"
+// 搜索结果
+export const DOUBAN_SEARCH_LIST = "DOUBAN_SEARCH_LIST"
 // tab_key
 export const DOUBAN_TAB_KEY = [
     {

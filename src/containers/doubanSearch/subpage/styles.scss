@@ -1,0 +1,14 @@
+@import '../../../static/scss/variable.scss';
+.doubanSearchList{
+    h3{
+        padding: 0 20px;
+        line-height: 45px;
+        color: #999;
+    }
+    p.recordItem{
+        padding: 0 20px;
+        line-height: 50px;
+        background-color: $color-bg-l;
+        border-bottom: 1px solid $color-bg;
+    }
+}

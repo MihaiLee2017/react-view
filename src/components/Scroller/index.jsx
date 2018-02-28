@@ -16,6 +16,7 @@ export default class Scroller extends Component {
             hasMore: this.props.hasMore || false, // 是否还有更多
             scrollX: this.props.scrollX || false,
             scrollY: this.props.scrollX || true,
+            // restDistance: this.props.restDistance || false,
         }
     }
     componentDidMount() {
@@ -27,7 +28,7 @@ export default class Scroller extends Component {
         })
     }
     componentWillReceiveProps(nextProps) {
-        const { isPullingDown, pullDownRefresh } = this.state
+        const { isPullingDown, pullDownRefresh, restDistance } = this.state
         const pLength = this.props.scrollLists && this.props.scrollLists.length ? this.props.scrollLists.length : 0
         const nLength = nextProps.scrollLists && nextProps.scrollLists.length ? nextProps.scrollLists.length : 0
         // if ((isPullingDown && pullDownRefresh) || (this.props.scrollLists && this.props.scrollLists.length !== nextProps.scrollLists.length)) {
@@ -39,6 +40,9 @@ export default class Scroller extends Component {
                 hasMore: nextProps.hasMore,
             })
         }
+        // if (restDistance) {
+        //     this.scrollTo(0, 0)
+        // }
         // 判断是否需要刷新scroll
         setTimeout(() => {
             if ((isPullingDown && pullDownRefresh) || (pLength !== nLength)) {

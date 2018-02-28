@@ -11,3 +11,6 @@ export const SUBJECT_PHOTOS = '/v2/movie/subject/{id}/photos'
 
 // 电影人
 export const CELEBRITY = '/v2/movie/celebrity/{id}'
+
+// 搜索电影
+export const SEARCH = '/v2/movie/search?q={text}'

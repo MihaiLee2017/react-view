@@ -41,3 +41,17 @@ export function celebrityDetail(payload) {
         payload,
     }
 }
+
+// 搜索记录
+export function searchCookie(payload) {
+    return {
+        type: actionTypes.DOUBAN_SEARCH_COOKIE,
+        payload,
+    }
+}
+export function searchList(payload) {
+    return {
+        type: actionTypes.DOUBAN_SEARCH_LIST,
+        payload,
+    }
+}
