@@ -34,10 +34,16 @@ export function getDouBanCelebrity(id) {
     return getDouBan(url)
 }
 
-// 电影
+// 电影搜索
 export function getDouBanSearch(test, start, count) {
     let url = URL.BASE_URL + URL.SEARCH
     url = setReplaceUrl(url, test)
     url = `${url}&start=${start}&count=${count}`
+    return getDouBan(url)
+}
+
+// 电影
+export function getDouBanTop() {
+    let url = URL.BASE_URL + URL.TOP_250
     return getDouBan(url)
 }

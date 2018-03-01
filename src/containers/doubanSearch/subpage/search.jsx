@@ -20,8 +20,8 @@ class Search extends React.Component {
         list.forEach((item) => {
             const { id = "", casts = {}, directors = {}, images = {}, rating = {}, title = "", year = "" } = item
             let del = {
-                casts: this._getObjectItem(casts, "name"),
-                directors: this._getObjectItem(directors, "name"),
+                casts: casts.name ? this._getObjectItem(casts, "name") : [],
+                directors: directors.name ? this._getObjectItem(directors, "name") : [],
                 images,
                 rating,
                 title,

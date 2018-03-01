@@ -12,6 +12,8 @@ export const DOUBAN_FILE_CELEBRITY = "DOUBAN_FILE_CELEBRITY"
 export const DOUBAN_SEARCH_COOKIE = "DOUBAN_SEARCH_COOKIE"
 // 搜索结果
 export const DOUBAN_SEARCH_LIST = "DOUBAN_SEARCH_LIST"
+// 搜索结果
+export const DOUBAN_TOP_250 = "DOUBAN_TOP_250"
 // tab_key
 export const DOUBAN_TAB_KEY = [
     {

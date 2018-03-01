@@ -114,6 +114,26 @@ function searchListStates(state = searchListState, action) {
     }
 }
 
+const topListState = {
+    value: '',
+    list: [],
+    page: {
+        total: 0,
+        start: 0,
+        count: 20,
+        hasMore: true,
+    },
+    scrollDistance: 0,
+}
+function topListStates(state = topListState, action) {
+    switch (action.type) {
+        case actionTypes.DOUBAN_TOP_250:
+            return { ...state, ...action.payload }
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
     theatersStates,
     comingStates,
@@ -122,4 +142,5 @@ export default combineReducers({
     celebrityStates,
     searchCookieStates,
     searchListStates,
+    topListStates,
 })

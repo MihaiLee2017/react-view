@@ -14,3 +14,6 @@ export const CELEBRITY = '/v2/movie/celebrity/{id}'
 
 // 搜索电影
 export const SEARCH = '/v2/movie/search?q={text}'
+
+// top250
+export const TOP_250 = '/v2/movie/top250'

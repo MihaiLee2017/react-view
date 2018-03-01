@@ -55,3 +55,10 @@ export function searchList(payload) {
         payload,
     }
 }
+
+export function search250(payload) {
+    return {
+        type: actionTypes.DOUBAN_TOP_250,
+        payload,
+    }
+}
