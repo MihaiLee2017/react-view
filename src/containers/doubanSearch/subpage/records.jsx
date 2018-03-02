@@ -14,7 +14,10 @@ class Records extends React.Component {
             <div className="doubanRecords doubanSearchList">
                 <h3>
                     <span>{title}</span>
-                    <span className="icon-paragraph-center iconRight" onClick={this.onCleanHandle.bind(this, false)}></span>
+                    {
+                        len > 0 && <span className="icon-cancel-circle iconRight" onClick={this.onCleanHandle.bind(this, false)}></span>
+                    }
+
                 </h3>
                 {
                     len <= 0 ?
@@ -24,7 +27,7 @@ class Records extends React.Component {
                             return (
                                 <p className="recordItem" key={index}>
                                     <span onClick={this.onClickHandle.bind(this, item)}>{item}</span>
-                                    <span className="icon-paragraph-center" onClick={this.onCleanHandle.bind(this, index + 1)}></span>
+                                    <span className="icon-cancel-circle" onClick={this.onCleanHandle.bind(this, index + 1)}></span>
                                 </p>
                             )
                         })

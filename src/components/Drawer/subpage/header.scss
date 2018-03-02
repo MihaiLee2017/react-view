@@ -4,13 +4,15 @@
     padding:25px 20px;
     color:$color-text-l;
     font-size: $font-size-medium-x;
+    letter-spacing: 1px;
     dl{
         display: flex;
-        &:nth-child(1){
-            margin-bottom: 15px;
+        margin-bottom: 15px;
+        &:nth-last-child(1){
+            margin-bottom: 0px;
         }
         dt{
-            width: 50px;
+            width: 55px;
         }
         dd{
             flex: 1;

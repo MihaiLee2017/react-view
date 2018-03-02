@@ -11,7 +11,7 @@ export default class SearchHeader extends Component {
             <div className="searchHeader">
                 <p>{title}</p>
                 <div className='searchInput' onClick={this.onSearchClick.bind(this)}>
-                    <span className="icon-spinner2"></span>
+                    <span className="icon-search"></span>
                     {
                         keyWord.map((item, index) => {
                             const msg = (index === len - 1) ? `${item}` : ` ${item} / `

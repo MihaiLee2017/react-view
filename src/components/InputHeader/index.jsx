@@ -46,9 +46,9 @@ class InputHeader extends React.Component {
         return (
             <div className="inputHeader">
                 <div className="inputMain">
-                    <span className="icon-spinner2"></span>
+                    <span className="icon-search"></span>
                     <input type='text' value={value} onChange={this.onChangeHandle.bind(this)} />
-                    <span style={style} onClick={this.onClearValue.bind(this)} className="icon-paragraph-center iconRight"></span>
+                    <span style={style} onClick={this.onClearValue.bind(this)} className="icon-cancel-circle iconRight"></span>
                 </div>
                 {/*<span className="inputBtn" onClick={this.onCancelHandle.bind(this)}>取消</span>*/}
                 {

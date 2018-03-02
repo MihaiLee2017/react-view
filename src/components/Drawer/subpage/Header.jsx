@@ -12,6 +12,10 @@ class DrawerHeader extends Component {
                     <dt>简介：</dt>
                     <dd>前端工程师</dd>
                 </dl>
+                <dl>
+                    <dt>邮箱：</dt>
+                    <dd>923142305@qq.com</dd>
+                </dl>
             </div>
         )
     }
