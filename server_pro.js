@@ -12,8 +12,8 @@ var zhihuUrl = "https://zhihu-daily.leanapp.cn"
 // var url = "http://192.168.0.2:40001"
 app.use('/zhihu/*', proxy({ target: zhihuUrl, secure: false, changeOrigin: true, pathRewrite: { '^/zhihu': '' } }))
 
-app.listen(4444, function () {
-    console.log("App listening at port 4444;")
+app.listen(8888, function () {
+    console.log("App listening at port 8888;")
 })
 
 
